@@ -11,27 +11,15 @@ export class ListArtisanRequestsService {
   constructor(
     private readonly prisma: PrismaService,
   ) {}
-
+  
   async execute(input: ListArtisanRequestsInput) {
     const requests = await this.prisma.artisanCreationRequest.findMany({
       where: {
         status: input.status,
       },
-      include: {
-        userRequesting: {
-          include: {
-            profile: true,
-          },
-        },
-        userReviwer: {
-          include: {
-            profile: true,
-          },
-        },
-      },
-      orderBy: {
+      orderBy:{
         createdAt: 'desc',
-      },
+      }
     });
 
     return requests;

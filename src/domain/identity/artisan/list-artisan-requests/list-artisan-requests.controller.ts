@@ -6,7 +6,7 @@ import { RolesGuard } from '@/domain/auth/roles/roles.guard'
 import { Roles } from '@/domain/auth/roles/roles.decorator'
 import { Role } from '@prisma/client'
 
-@Controller('artisans/requests')
+@Controller('artisans-requests')
 @UseGuards(JwtAuthGuard, RolesGuard)
 export class ListArtisanRequestsController {
   constructor(
